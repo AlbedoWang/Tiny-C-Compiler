@@ -1,0 +1,167 @@
+-Lexer Analysis
+Token = 'main'	Type =  18
+Token = '('	Type =  7
+Token = ')'	Type =  8
+Token = '{'	Type =  10
+Token = 'int'	Type =  14
+Token = 'Alice'	Type =  16
+Token = '='	Type =  9
+Token = '34'	Type =  17
+Token = ','	Type =  19
+Token = 'Bob'	Type =  16
+Token = ','	Type =  19
+Token = 'Charlie'	Type =  16
+Token = '='	Type =  9
+Token = '200'	Type =  17
+Token = ';'	Type =  6
+Token = 'show'	Type =  20
+Token = '('	Type =  7
+Token = 'Alice'	Type =  16
+Token = ')'	Type =  8
+Token = ';'	Type =  6
+Token = 'Bob'	Type =  16
+Token = '='	Type =  9
+Token = 'Alice'	Type =  16
+Token = '+'	Type =  0
+Token = '100'	Type =  17
+Token = '+'	Type =  0
+Token = 'Charlie'	Type =  16
+Token = ';'	Type =  6
+Token = 'Charlie'	Type =  16
+Token = '='	Type =  9
+Token = 'Bob'	Type =  16
+Token = '-'	Type =  1
+Token = 'Alice'	Type =  16
+Token = ';'	Type =  6
+Token = 'if'	Type =  12
+Token = '('	Type =  7
+Token = 'Alice'	Type =  16
+Token = '<'	Type =  5
+Token = 'Bob'	Type =  16
+Token = ')'	Type =  8
+Token = '{'	Type =  10
+Token = 'show'	Type =  20
+Token = '('	Type =  7
+Token = 'Bob'	Type =  16
+Token = ')'	Type =  8
+Token = ';'	Type =  6
+Token = '}'	Type =  11
+Token = 'else'	Type =  13
+Token = '{'	Type =  10
+Token = 'show'	Type =  20
+Token = '('	Type =  7
+Token = 'Charlie'	Type =  16
+Token = ')'	Type =  8
+Token = ';'	Type =  6
+Token = '}'	Type =  11
+Token = 'while'	Type =  24
+Token = '('	Type =  7
+Token = '('	Type =  7
+Token = 'Alice'	Type =  16
+Token = '>'	Type =  4
+Token = '0'	Type =  17
+Token = ')'	Type =  8
+Token = '&&'	Type =  25
+Token = '('	Type =  7
+Token = 'Bob'	Type =  16
+Token = '>'	Type =  4
+Token = 'Charlie'	Type =  16
+Token = ')'	Type =  8
+Token = ')'	Type =  8
+Token = '{'	Type =  10
+Token = 'Alice'	Type =  16
+Token = '='	Type =  9
+Token = 'Alice'	Type =  16
+Token = '-'	Type =  1
+Token = '1'	Type =  17
+Token = ';'	Type =  6
+Token = 'Charlie'	Type =  16
+Token = '='	Type =  9
+Token = 'Charlie'	Type =  16
+Token = '+'	Type =  0
+Token = '1'	Type =  17
+Token = ';'	Type =  6
+Token = '}'	Type =  11
+Token = 'show'	Type =  20
+Token = '('	Type =  7
+Token = 'Alice'	Type =  16
+Token = ')'	Type =  8
+Token = ';'	Type =  6
+Token = 'show'	Type =  20
+Token = '('	Type =  7
+Token = 'Charlie'	Type =  16
+Token = ')'	Type =  8
+Token = ';'	Type =  6
+Token = '}'	Type =  11
+
+-Grammar Analysis
+
+--Print AST
+Program	main
+	Body	Body
+		IntDeclaration	Alice
+			IntLiteral	34
+		IntDeclaration	Bob
+		IntDeclaration	Charlie
+			IntLiteral	200
+		Body	Body
+			Show	show
+				Identifier	Alice
+			Body	Body
+				Assignment	Bob
+					Addtive	+
+						Addtive	+
+							Identifier	Alice
+							IntLiteral	100
+						Identifier	Charlie
+				Body	Body
+					Assignment	Charlie
+						Addtive	-
+							Identifier	Bob
+							Identifier	Alice
+					Body	Body
+						If	if
+							Boole	Boole
+								LT	<
+									Identifier	Alice
+									Identifier	Bob
+							Body	Body
+								Show	show
+									Identifier	Bob
+							Else	else
+								Body	Body
+									Show	show
+										Identifier	Charlie
+						Body	Body
+							While	while
+								Boole	Boole
+									And	&&
+										GT	>
+											Identifier	Alice
+											IntLiteral	0
+										GT	>
+											Identifier	Bob
+											Identifier	Charlie
+								Body	Body
+									Assignment	Alice
+										Addtive	-
+											Identifier	Alice
+											IntLiteral	1
+									Body	Body
+										Assignment	Charlie
+											Addtive	+
+												Identifier	Charlie
+												IntLiteral	1
+							Body	Body
+								Show	show
+									Identifier	Alice
+								Body	Body
+									Show	show
+										Identifier	Charlie
+
+--Print parameter values in show() function
+34
+334
+0
+334
+Done

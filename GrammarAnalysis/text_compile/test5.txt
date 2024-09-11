@@ -1,0 +1,21 @@
+main()
+{
+    int Alice=34, Bob, Charlie=200;
+    show(Alice);
+    Bob=Alice+100+Charlie;
+    Charlie=Bob-Alice;
+    if(Alice<Bob){
+        show(Bob);
+    }
+    else{
+        show(Charlie);
+    }
+    while((Alice>0)&&(Bob>Charlie)){
+        Alice=Alice-1;
+        Charlie=Charlie+1;
+    }
+    show(Alice);
+    show(Charlie);
+}
+
+
